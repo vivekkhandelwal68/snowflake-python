@@ -1,0 +1,36 @@
+Steps to connect with Snowflake
+
+1) Download snowflake python connector.
+    --pip install snowflake-connector-python
+
+2) import connector in python program
+    --import snowflake.connector as sf
+
+3)Create a configuration file and define below given variables and import this file in our main program.
+    --account=''
+    --user=''
+    --password=''
+    --warehouse=''
+    --database=''
+    --schema=''
+
+4) create a connection object
+    --conn=sf.connect(user=config.user, password=config.password, account=config.account)
+
+5)define two methods sf_execute and sf_excute_getresult
+    sf_execute : execute query and does not return any result. Good for setting up Snowflake 
+    configuration like warehouse, database, schema and role.
+    sf_excute_getresult : execute query and return any result in the form of cursor object.
+
+    sample call of above given functions:
+    func(connection, query)
+
+6) Set the configuration of Snowflake.
+
+7) Call these function as per requirement and pass connection object and query.
+
+8) connection object is used to create cursor object. With the help execute method of cursor object,
+   we can execute query on Snowflake. The datatype of upcoming result is dependent 
+   upon type of cursor we created. The default cursor type return result in form of tuples. 
+   We can get result in form of a dictionary by creating DictCursor cursor.
+
